@@ -1,18 +1,12 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace TaskForceUtilities.Startup
+namespace Template.Console.Startup;
+
+public static partial class IServiceCollectionExtension
 {
-    public static partial class IServiceCollectionExtension
+    public static IServiceCollection RegisterServices(this IServiceCollection services)
     {
-        public static IServiceCollection RegisterServices(this IServiceCollection services)
-        {
-           
-            return services;
-        }
+       
+        return services;
     }
 }

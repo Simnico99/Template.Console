@@ -1,8 +1,8 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Serilog;
-using TaskForceUtilities.Startup;
-using ZirconNet.WPF.DependencyInjection;
+using Template.Console.Startup;
+using ZirconNet.Console.DependencyInjection;
 
 try
 {
