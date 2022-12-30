@@ -1,0 +1,50 @@
+{
+  "schema": "http://json.schemastore.org/template",
+  "author": "Simnico99",
+  "classifications": [ "Console", "Dependency Injection" ],
+  "identity": "Template.Console",
+  "name": "Template console",
+  "description": "This is a custom template containing a start with Dependency Injection",
+  "shortName": "template-console",
+  "sourceName": "Template.Console",
+  "tags": {
+    "language": "C#",
+    "type": "project"
+  },
+  "preferNameDirectory": true,
+  "symbols": {
+    "Framework": {
+      "type": "parameter",
+      "description": "The target framework for the project.",
+      "datatype": "choice",
+      "choices": [
+        {
+          "choice": "net6.0"
+        },
+        {
+          "choice": "net7.0"
+        }
+      ],
+      "defaultValue": "net7.0",
+      "replaces": "{TargetFramework}"
+    },
+    "EnableSerilog": {
+      "type": "parameter",
+      "description": "Enable Serilog.",
+      "datatype": "bool",
+      "defaultValue": "true"
+    }
+  },
+  "sources": [
+    {
+      "modifiers": [
+        {
+          "condition": "(!EnableSerilog)",
+          "exclude": [
+            "Template.Console/Startup/ConfigureLoggers.cs"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -13,10 +13,14 @@ try
     //Configure
     host.ConfigureAppConfiguration(x => x.AddConfiguration(config));
     host.ConfigureServices(x => x.RegisterServices());
+@*#if (EnableSerilog)
     host.ConfigureLoggers(config);
+#endif*@
 
     //Use
+@*#if (EnableSerilog)
     host.UseSerilog();
+#endif*@
     host.UseBackgroundServices();
     host.UseConsoleLifetime();
 
