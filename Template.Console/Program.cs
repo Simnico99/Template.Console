@@ -28,7 +28,7 @@ try
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Software crashed: {Exception}");
+    Log.Fatal(ex, "Software crashed:");
     throw;
 }
 finally
