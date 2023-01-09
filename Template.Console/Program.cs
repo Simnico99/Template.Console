@@ -22,10 +22,9 @@ try
     host.UseSerilog();
 #endif*@
     host.UseBackgroundServices();
-    host.UseConsoleLifetime();
 
     //Start
-    await host.StartAsync();
+    await host.RunConsoleAsync();
 }
 catch (Exception ex)
 {
