@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Hosting;
 using Serilog;
 using Template.Console.Startup;
-using ZirconNet.Console.DependencyInjection;
+using ZirconNet.Core.Hosting;
 
 try
 {
