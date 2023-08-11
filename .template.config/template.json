@@ -3,7 +3,7 @@
   "author": "Simnico99",
   "classifications": [ "Console", "Dependency Injection" ],
   "identity": "Template.Console",
-  "name": "Template console",
+  "name": "Console (Dependency Injection)",
   "description": "This is a custom template containing a start with Dependency Injection",
   "shortName": "template-console",
   "sourceName": "Template.Console",
@@ -27,24 +27,6 @@
       ],
       "defaultValue": "net7.0",
       "replaces": "{TargetFramework}"
-    },
-    "EnableSerilog": {
-      "type": "parameter",
-      "description": "Enable Serilog.",
-      "datatype": "bool",
-      "defaultValue": "true"
     }
-  },
-  "sources": [
-    {
-      "modifiers": [
-        {
-          "condition": "(!EnableSerilog)",
-          "exclude": [
-            "Template.Console/Startup/ConfigureLoggers.cs"
-          ]
-        }
-      ]
-    }
-  ]
+  }
 }

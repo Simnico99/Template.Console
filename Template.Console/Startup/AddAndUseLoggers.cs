@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 using Serilog;
 using System.Reflection;
 
@@ -7,12 +6,15 @@ namespace Template.Console.Startup;
 
 public static partial class IHostBuilderExtension
 {
-    public static IHostBuilder ConfigureLoggers(this IHostBuilder builder, IConfiguration configuration)
+    public static IHostBuilder AddAndUseLoggers(this IHostBuilder builder)
     {
-        Log.Logger = new LoggerConfiguration()
-        .ReadFrom
-        .Configuration(configuration)
-        .CreateLogger();
+        builder.UseSerilog((hostContext, loggerConfiguration) => 
+        Log.Logger = loggerConfiguration
+            .ReadFrom
+            .Configuration(hostContext.Configuration)
+            .CreateLogger());
+
+
 
         Log.Information("Starting {SoftwareName} up!", AppDomain.CurrentDomain.FriendlyName);
         Log.Information("Environment: {Environment}", Environment.GetEnvironmentVariable("DOTNET_") ?? "Production");

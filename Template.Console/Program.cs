@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
+﻿using Microsoft.Extensions.Hosting;
 using Serilog;
 using Template.Console.Startup;
 using ZirconNet.Core.Hosting;
@@ -7,32 +6,24 @@ using ZirconNet.Core.Hosting;
 try
 {
     //Create
-    var host = new HostBuilder();
-    var config = new ConfigurationBuilder().RegisterConfigurations().Build();
+    var host = Host.CreateDefaultBuilder(args);
 
     //Configure
-    host.ConfigureAppConfiguration(x => x.AddConfiguration(config));
     host.ConfigureServices(x => x.RegisterServices());
-@*#if (EnableSerilog)
-    host.ConfigureLoggers(config);
-#endif*@
 
-    //Use
-@*#if (EnableSerilog)
-    host.UseSerilog();
-#endif*@
-    host.UseBackgroundServices();
+    //Add
+    host.AddEnvironmentManager(args);
+    host.AddAndUseLoggers();
 
     //Start
     await host.RunConsoleAsync();
 }
 catch (Exception ex)
 {
-    Log.Fatal(ex, "Software crashed:");
+    Log.Fatal(ex, "Template.Console crashed:");
     throw;
 }
 finally
 {
     Log.CloseAndFlush();
-    Environment.Exit(0);
 }
